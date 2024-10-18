@@ -6,9 +6,12 @@ import Contexts.logo;
 import Contexts.redirect;
 
 public class Server {
-    private static HttpServer server;
+    private static HttpServer server;                                                                       //Server Variable
+    private static Watchdog Watchdog_TH;                                                                    //Watchdog Variable
 
     public static void main(String[] args) {                                                                //Launch method
+        Watchdog_TH = new Watchdog();                                                                       //Create Watchdog
+        Watchdog_TH.start();                                                                                //Start Watchdog
         try {                                                                                               //Try:
             run();                                                                                          //Start Main Methdod
         } catch (Exception e) {                                                                             //When Exeption Throwed:
@@ -32,9 +35,10 @@ public class Server {
         System.out.println("Starting Server...");                                                         //console output
         server.start();                                                                                     //start server
         System.out.println("sucsesful! Go to Main Loop...");                                              //console output
-        Loop();                                                                                             //go to Main Loop
+        StartLoop();                                                                                        //Start Main Loop
     }                                                                                                       //Method End
     private static void onExeception(Exception e) {                                                         //When Exception Thrown
+        Watchdog_TH.execepted();                                                                            //Trigger Watchdog
         throw new RuntimeException("Runtime Exception", e);                                         //Throw Runtime Exeption
     }                                                                                                       //Method End
     private static int readInteger() throws IOException {
@@ -55,12 +59,23 @@ public class Server {
         server.createContext("/img/logo.png", new logo());                                             //create /img/logo.png
         server.createContext("/", new redirect());
     }
+    private static void StartLoop() {
+        try {                                                                                               //Try:
+            Loop();                                                                                         //go to Loop
+        } catch (Exception e) {                                                                             //On Exception:
+            onExeception(e);                                                                                //Handle Exeception
+        }
+    }
     private static void Loop() throws IOException {                                                         //Main Loop
         String input = "";                                                                                  //Input String
         while (true) {                                                                                      //Repeat Forever
             if (System.in.available() > 0) {
                 char i = (char) System.in.read();
                 input += i;
+                if (i == '\n') {
+                    System.out.println(input);
+                    input = "";
+                }
             }
         }
     }
