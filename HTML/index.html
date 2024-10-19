@@ -1,9 +1,24 @@
-<html>
+<html lang="de-DE">
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>KastenLst - Startseite</title>
         <link rel="icon" href="/img/icon.png">
         <link rel="stylesheet" href="/styles.css">
     </head>
     <body>
-        <img src="/img/logo.png" class="background">
+        <video class="background" id="background-video" loop>
+            <source src="/img/background.mp4" type="video/mp4">
+        </video>
+        <div class="contents">
+            
+        </div>
+        <div class="interact" id="interaction"></div>
     </body>
+    <script>
+        document.getElementById("interaction").onclick = function (ev) {
+            document.getElementById("interaction").onclick = function(ev){};
+            document.getElementById("background-video").play();
+        };
+    </script>
 </html>

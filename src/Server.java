@@ -3,6 +3,7 @@ import java.net.InetSocketAddress;
 
 import com.sun.net.httpserver.HttpServer;
 
+import Contexts.background;
 import Contexts.icon;
 import Contexts.index;
 import Contexts.logo;
@@ -50,6 +51,7 @@ public class Server {
         server.createContext("/styles.css", new styles());                                             //create /styles.css
         server.createContext("/img/logo.png", new logo());                                             //create /img/logo.png
         server.createContext("/img/icon.png", new icon());                                             //create /img/icon.png
+        server.createContext("/img/background.mp4", new background());                                 //create /img/background.png
         server.createContext("/", new redirect());                                                     //create redirection
     }
     private static void StartLoop() {
