@@ -1,0 +1,11 @@
+<span id="placeholder"></span>
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById('placeholder').innerHTML = xhr.responseText;
+        }
+    }
+    xhr.open('GET', 'localhost:8000/test');
+    xhr.send();
+</script>

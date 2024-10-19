@@ -57,8 +57,10 @@ public class Server {
         }
     }
     private static void Loop() throws Exception {                                                         //Main Loop
-        while (true) {                                                                                      //Repeat Forever
-            Thread.sleep(1000);
+        while (true) {                                                                                    //Repeat Forever
+            System.console().readLine();
+            server.stop(100);
+            System.exit(0);
         }
     }
 }
