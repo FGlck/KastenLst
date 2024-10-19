@@ -2,6 +2,8 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 
 import com.sun.net.httpserver.HttpServer;
+
+import Contexts.icon;
 import Contexts.index;
 import Contexts.logo;
 import Contexts.redirect;
@@ -47,6 +49,7 @@ public class Server {
         server.createContext("/index", new index());                                                   //create /index context
         server.createContext("/styles.css", new styles());                                             //create /styles.css
         server.createContext("/img/logo.png", new logo());                                             //create /img/logo.png
+        server.createContext("/img/icon.png", new icon());                                             //create /img/icon.png
         server.createContext("/", new redirect());                                                     //create redirection
     }
     private static void StartLoop() {
