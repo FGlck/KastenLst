@@ -1,9 +1,11 @@
 import java.io.IOException;
 import java.net.InetSocketAddress;
+
 import com.sun.net.httpserver.HttpServer;
 import Contexts.index;
 import Contexts.logo;
 import Contexts.redirect;
+import Contexts.styles;
 
 public class Server {
     private static HttpServer server;                                                                       //Server Variable
@@ -22,8 +24,8 @@ public class Server {
         System.out.print("Enter Server Port: ");                                                          //console output
         server = HttpServer.create(                                                                         //create Server
             new InetSocketAddress(                                                                          //create socket address
-                readInteger())                                                                              //console input
-            , 0);                                                                                   //???
+                Integer.parseInt(System.console().readLine()))                                              //console input
+            , 0);                                                                                   //
         System.out.println("Server initializing sucsesful!");                                             //console output
         System.out.println("Seting Executor...");                                                         //console output
         server.setExecutor(null);                                                                  //set executor
@@ -41,23 +43,11 @@ public class Server {
         Watchdog_TH.execepted();                                                                            //Trigger Watchdog
         throw new RuntimeException("Runtime Exception", e);                                         //Throw Runtime Exeption
     }                                                                                                       //Method End
-    private static int readInteger() throws IOException {
-        String input = "";
-        while (true) {
-            if (System.in.available() > 0) {
-                char i = (char) System.in.read();
-                if (i == '\n') {
-                    return Integer.parseInt(input.trim());
-                } else {
-                    input += i;
-                }
-            }
-        }
-    }
     private static void createContexts() throws IOException {                                               //create contexts:
         server.createContext("/index", new index());                                                   //create /index context
+        server.createContext("/styles.css", new styles());                                             //create /styles.css
         server.createContext("/img/logo.png", new logo());                                             //create /img/logo.png
-        server.createContext("/", new redirect());
+        server.createContext("/", new redirect());                                                     //create redirection
     }
     private static void StartLoop() {
         try {                                                                                               //Try:
@@ -66,17 +56,9 @@ public class Server {
             onExeception(e);                                                                                //Handle Exeception
         }
     }
-    private static void Loop() throws IOException {                                                         //Main Loop
-        String input = "";                                                                                  //Input String
+    private static void Loop() throws Exception {                                                         //Main Loop
         while (true) {                                                                                      //Repeat Forever
-            if (System.in.available() > 0) {
-                char i = (char) System.in.read();
-                input += i;
-                if (i == '\n') {
-                    System.out.println(input);
-                    input = "";
-                }
-            }
+            Thread.sleep(1000);
         }
     }
 }
