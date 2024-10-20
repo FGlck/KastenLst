@@ -4,6 +4,7 @@ import java.net.InetSocketAddress;
 import com.sun.net.httpserver.HttpServer;
 
 import Contexts.background;
+import Contexts.font;
 import Contexts.icon;
 import Contexts.index;
 import Contexts.logo;
@@ -49,10 +50,20 @@ public class Server {
     private static void createContexts() throws IOException {                                               //create contexts:
         server.createContext("/index", new index());                                                   //create /index context
         server.createContext("/styles.css", new styles());                                             //create /styles.css
+        server.createContext("/font.ttf", new font());                                                 //create /font.ttf
         server.createContext("/img/logo.png", new logo());                                             //create /img/logo.png
         server.createContext("/img/icon.png", new icon());                                             //create /img/icon.png
-        server.createContext("/img/background.mp4", new background());                                 //create /img/background.png
+        server.createContext("/img/background.mp4", new background());                                 //create /img/background.mp4
         server.createContext("/", new redirect());                                                     //create redirection
+    }
+    private static void removeContexts() throws IOException {                                               //remove contexts:
+        server.removeContext("/index");                                                                //remove /index context
+        server.removeContext("/styles.css");                                                           //remove /styles.css
+        server.removeContext("/font.ttf");                                                             //remove /font.ttf
+        server.removeContext("/img/logo.png");                                                         //remove /img/logo.png
+        server.removeContext("/img/icon.png");                                                         //remove /img/icon.png
+        server.removeContext("/img/background.mp4");                                                   //remove /img/background.mp4
+        server.removeContext("/");                                                                     //remove redirection
     }
     private static void StartLoop() {
         try {                                                                                               //Try:
@@ -63,9 +74,29 @@ public class Server {
     }
     private static void Loop() throws Exception {                                                         //Main Loop
         while (true) {                                                                                    //Repeat Forever
-            System.console().readLine();
-            server.stop(100);
-            System.exit(0);
+            System.out.print(">");                                                                      //console output
+            String input = System.console().readLine();                                                   //console input
+            input = input.trim();                                                                         //trim input
+            if (input.contains("rl") || input.contains("reload")) {                                   //check input
+                System.out.println("Reloading Server...");                                              //console output
+                System.out.println("Removing Contexts...");                                             //console output
+                removeContexts();                                                                         //remove contexts
+                System.out.println("Regenerating Contexts...");                                         //console output
+                createContexts();                                                                         //create contexts
+                System.out.println("Done!");                                                            //console output
+            } else if (input.contains("s") || input.contains("stop")) {                               //check input
+                System.out.println("Stopping Server...");                                               //console output
+                server.stop(0);                                                                     //stop Server
+                System.out.println("Exiting...");                                                       //console output
+                System.exit(0);                                                                    //exit
+            } else if (input.contains("h") || input.contains("help")) {                               //check input
+                System.out.println("Available Commands:");                                              //console output
+                System.out.println("\"reload\" / \"rl\": Reload Contexts");                             //console output
+                System.out.println("\"help\" / \"h\": Print this Help");                                //console output
+                System.out.println("\"stop\" / \"s\": Stop Server and Exit");                           //console output
+            } else {
+                System.err.println("Invalid Command, type \"help\" to see available commands.");        //console output
+            }
         }
     }
 }

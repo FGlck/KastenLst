@@ -17,10 +17,9 @@ public class styles implements HttpHandler {
         reader.close();
     }
     public void handle(HttpExchange exchange) throws IOException {
-        String request = fileContext;
-        exchange.sendResponseHeaders(200, request.length());
+        exchange.sendResponseHeaders(200, fileContext.length());
         OutputStream stream = exchange.getResponseBody();
-        stream.write(request.getBytes());
+        stream.write(fileContext.getBytes());
         stream.close();
     }
 }

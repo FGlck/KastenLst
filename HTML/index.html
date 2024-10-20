@@ -13,11 +13,11 @@
         <div class="contents">
             
         </div>
-        <div class="interact" id="interaction"></div>
+        <div id="interact" class="interact"></div>
     </body>
     <script>
-        document.getElementById("interaction").onclick = function (ev) {
-            document.getElementById("interaction").onclick = function(ev){};
+        document.getElementById("interact").onclick = function (ev) {
+            document.getElementById("interact").remove();
             document.getElementById("background-video").play();
         };
     </script>

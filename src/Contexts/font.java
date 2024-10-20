@@ -7,10 +7,10 @@ import java.io.OutputStream;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
-public class background implements HttpHandler {
+public class font implements HttpHandler {
     private byte[] bytes;
-    public background() throws IOException {
-        InputStream reader = new FileInputStream("img/background.mp4");
+    public font() throws IOException {
+        InputStream reader = new FileInputStream("font.ttf");
         bytes = reader.readAllBytes();
         reader.close();
     }
