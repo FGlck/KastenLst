@@ -11,7 +11,7 @@ video.background {
     height: 100%;
 }
 
-div.contents , div.interact {
+div.contents, div.interact {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -19,7 +19,79 @@ div.contents , div.interact {
     left: 0%;
 }
 
-body {
+body.index {
     background-color: black;
     font-family: KastenLstFon;
+}
+
+body.page-not-found {
+    background-color: gray;
+    font-family: KastenLstFon;
+}
+
+body.page-not-found img {
+    width: 80%;
+    height: auto;
+    top: 0%;
+    left: 10%;
+    position: relative;
+}
+
+body.page-not-found div {
+    width: 80%;
+    height: 60%;
+    top: 10%;
+    left: 10%;
+    position: relative;
+}
+
+body.page-not-found p {
+    width: 100%;
+    height: 50%;
+    font-size: 6rem;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    margin: 0px;
+}
+
+body.page-not-found button {
+    width: calc(100% - 2px);
+    height: calc(50% - 2px);
+    font-size: 6rem;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    margin: 0px;
+    border-radius: 10px;
+    cursor: hand;
+    border: 1px;
+    font-size: 5rem;
+    color: black;
+    background-color: blue;
+    font-family: KastenLstFon;
+}
+
+body.page-not-found button:hover {
+    color: gray;
+    background-color: lightblue;
+}
+
+@media only screen and (orientation: landscape) {
+    body.page-not-found img {
+        width: auto;
+        height: 80%;
+        top: 10%;
+        left: 2%;
+        float: left;
+        position: relative;
+    }
+    body.page-not-found div {
+        width: 40%;
+        height: 80%;
+        top: 10%;
+        left: 2%;
+        float: left;
+        position: relative;
+    }
 }

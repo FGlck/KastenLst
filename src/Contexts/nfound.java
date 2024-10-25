@@ -7,10 +7,10 @@ import java.io.OutputStream;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
-public class redirect implements HttpHandler {
+public class nfound implements HttpHandler {
     private String fileContext = "";
-    public redirect() throws IOException {
-        InputStream reader = new FileInputStream("HTML/redirect.html");
+    public nfound() throws IOException {
+        InputStream reader = new FileInputStream("HTML/notfound.html");
         while (reader.available() > 0) {
             fileContext += (char)reader.read();
         }
