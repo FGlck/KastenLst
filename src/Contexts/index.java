@@ -18,7 +18,7 @@ public class index implements HttpHandler {
     }
     public void handle(HttpExchange exchange) throws IOException {
         String request = fileContext;
-        exchange.sendResponseHeaders(200, request.length());
+        exchange.sendResponseHeaders(200, request.getBytes().length);
         OutputStream stream = exchange.getResponseBody();
         stream.write(request.getBytes());
         stream.close();

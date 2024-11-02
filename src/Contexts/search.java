@@ -7,10 +7,10 @@ import java.io.OutputStream;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
-public class icon implements HttpHandler {
+public class search implements HttpHandler {
     private byte[] bytes;
-    public icon() throws IOException {
-        InputStream reader = new FileInputStream("img/icon.png");
+    public search() throws IOException {
+        InputStream reader = new FileInputStream("img/search.png");
         bytes = reader.readAllBytes();
         reader.close();
     }

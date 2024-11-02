@@ -10,6 +10,8 @@ import Contexts.icon;
 import Contexts.index;
 import Contexts.logo;
 import Contexts.nfound;
+import Contexts.randchatbtn;
+import Contexts.search;
 import Contexts.styles;
 
 public class Server {
@@ -54,6 +56,8 @@ public class Server {
         server.createContext("/font.ttf", new font());                                                 //create /font.ttf
         server.createContext("/img/logo.png", new logo());                                             //create /img/logo.png
         server.createContext("/img/icon.png", new icon());                                             //create /img/icon.png
+        server.createContext("/img/search.png", new search());                                         //create /img/search.png
+        server.createContext("/img/randchatbtn.png", new randchatbtn());                               //create /img/randchatbtn.png
         server.createContext("/img/background.mp4", new background());                                 //create /img/background.mp4
         server.createContext("/", new nfound());                                                       //create not found
     }
@@ -63,6 +67,8 @@ public class Server {
         server.removeContext("/font.ttf");                                                             //remove /font.ttf
         server.removeContext("/img/logo.png");                                                         //remove /img/logo.png
         server.removeContext("/img/icon.png");                                                         //remove /img/icon.png
+        server.removeContext("/img/search.png");                                                       //remove /img/search.png
+        server.removeContext("/img/randchatbtn.png");                                                  //remove /img/randchatbtn.png
         server.removeContext("/img/background.mp4");                                                   //remove /img/background.mp4
         server.removeContext("/");                                                                     //remove not found
     }

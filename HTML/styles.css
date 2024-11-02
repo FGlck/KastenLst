@@ -3,7 +3,7 @@
     src: url("/font.ttf");
 }
 
-video.background {
+body.index video.background {
     position: absolute;
     top: 0%;
     left: 0%;
@@ -11,12 +11,46 @@ video.background {
     height: 100%;
 }
 
-div.contents, div.interact {
+body.index div.contents, body.index div.interact {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0%;
     left: 0%;
+}
+
+body.index div.header {
+    position: fixed;
+    width: 90%;
+    height: 10%;
+    top: 5%;
+    left: 5%;
+    background-color: orange;
+    border-radius: 10px;
+}
+
+body.index div.header img.randomchat {
+    position: relative;
+    float: left;
+    top: 15%;
+    height: 100%;
+    left: 30%;
+}
+
+body.index div.header img.search {
+    position: relative;
+    float: right;
+    top: 15%;
+    height: 100%;
+    right: 30%;
+}
+
+body.index div.header p {
+    position: relative;
+    top: 5%;
+    height: 90%;
+    right: 30%;
+    width: 40%;
 }
 
 body.index {

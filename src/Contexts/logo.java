@@ -11,9 +11,7 @@ public class logo implements HttpHandler {
     private byte[] bytes;
     public logo() throws IOException {
         InputStream reader = new FileInputStream("img/logo.png");
-        while (reader.available() > 0) {
-            bytes = reader.readAllBytes();
-        }
+        bytes = reader.readAllBytes();
         reader.close();
     }
     public void handle(HttpExchange exchange) throws IOException {

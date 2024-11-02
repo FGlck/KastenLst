@@ -7,10 +7,10 @@ import java.io.OutputStream;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
-public class icon implements HttpHandler {
+public class randchatbtn implements HttpHandler {
     private byte[] bytes;
-    public icon() throws IOException {
-        InputStream reader = new FileInputStream("img/icon.png");
+    public randchatbtn() throws IOException {
+        InputStream reader = new FileInputStream("img/randchatbtn.png");
         bytes = reader.readAllBytes();
         reader.close();
     }
